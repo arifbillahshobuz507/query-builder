@@ -31,3 +31,6 @@ Route::get('/left-join',[DemoController::class,'leftJoin']);
 
 //right join
 Route::get('/right-join',[DemoController::class,'rightJoin']);
+
+//cross join
+Route::get('/cross-join',[DemoController::class,'crossJoin']);

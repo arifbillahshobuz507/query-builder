@@ -82,4 +82,11 @@ class DemoController extends Controller
        $data = DB::table('products')->rightJoin('brands','products.brand_id','=', 'brands.id')->rightJoin('categories', 'products.category_id', '=', 'categories.id')->get();
        return $data;
     }
+
+    //cross Joine
+    public function crossJoin()
+    {
+       $data = DB::table('products')->crossJoin('brands')->get();
+       return $data;
+    }
 }
