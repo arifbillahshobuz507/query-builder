@@ -61,4 +61,9 @@ class DemoController extends Controller
         $data = DB::table('brands')->select('brand_name')->distinct()->get();
         return $data;
     }
+    public function innerJoin()
+    {
+       $data = DB::table('products')->join('brands','products.brand_id','=', 'brands.id')->join('categories', 'products.category_id', '=', 'categories.id')->get();
+       return $data;
+    }
 }
