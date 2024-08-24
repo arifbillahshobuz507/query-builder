@@ -25,3 +25,9 @@ Route::get('/select-clause-unique',[DemoController::class,'sekectClauseUniqque']
 
 //inner join
 Route::get('/inner-join',[DemoController::class,'innerJoin']);
+
+//left join
+Route::get('/left-join',[DemoController::class,'leftJoin']);
+
+//right join
+Route::get('/right-join',[DemoController::class,'rightJoin']);
