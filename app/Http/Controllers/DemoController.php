@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Facades\DB;
 
 class DemoController extends Controller
@@ -45,7 +46,7 @@ class DemoController extends Controller
         $max = DB::table('products')->max('price');
         $avg = DB::table('products')->avg('price');
         $sum = DB::table('products')->sum('price');
-        return ['count'=>$count, 'min'=>$min, 'max' => $max, "avarage"=>$avg,"sum"=>$sum];
+        return ['count' => $count, 'min' => $min, 'max' => $max, "avarage" => $avg, "sum" => $sum];
     }
 
     //select clause
@@ -65,28 +66,46 @@ class DemoController extends Controller
     //Inner Joine
     public function innerJoin()
     {
-       $data = DB::table('products')->join('brands','products.brand_id','=', 'brands.id')->join('categories', 'products.category_id', '=', 'categories.id')->get();
-       return $data;
+        $data = DB::table('products')->join('brands', 'products.brand_id', '=', 'brands.id')->join('categories', 'products.category_id', '=', 'categories.id')->get();
+        return $data;
     }
 
     //Left Joine
     public function leftJoin()
     {
-       $data = DB::table('products')->leftJoin('brands','products.brand_id','=', 'brands.id')->leftJoin('categories', 'products.category_id', '=', 'categories.id')->get();
-       return $data;
+        $data = DB::table('products')->leftJoin('brands', 'products.brand_id', '=', 'brands.id')->leftJoin('categories', 'products.category_id', '=', 'categories.id')->get();
+        return $data;
     }
 
     //right Joine
     public function rightJoin()
     {
-       $data = DB::table('products')->rightJoin('brands','products.brand_id','=', 'brands.id')->rightJoin('categories', 'products.category_id', '=', 'categories.id')->get();
-       return $data;
+        $data = DB::table('products')->rightJoin('brands', 'products.brand_id', '=', 'brands.id')->rightJoin('categories', 'products.category_id', '=', 'categories.id')->get();
+        return $data;
     }
 
     //cross Joine
     public function crossJoin()
     {
-       $data = DB::table('products')->crossJoin('brands')->get();
-       return $data;
+        $data = DB::table('products')->crossJoin('brands')->get();
+        return $data;
+    }
+
+    //advance JoinClause
+    public function advanceJoinClause()
+    {
+        $data = DB::table('products')
+            ->join("brands", function (JoinClause $joine) {
+                $joine->on('products.brand_id', '=', 'brands.id')
+                    ->where('products.title', '=', 'milk');
+            })->get();
+        return $data;
+    }
+
+    //Union Joine
+    public function unionJoin(){
+        $query1 = DB::table('products')->where('title','=', 'milk');
+        $query2 = DB::table('products')->where('price','=', '20')->union($query1)->get();
+        return $query2;
     }
 }

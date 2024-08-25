@@ -23,6 +23,7 @@ Route::get('/select-clause',[DemoController::class,'sekectClause']);
 //select clause for unique value or not duplicate
 Route::get('/select-clause-unique',[DemoController::class,'sekectClauseUniqque']);
 
+
 //inner join
 Route::get('/inner-join',[DemoController::class,'innerJoin']);
 
@@ -34,3 +35,17 @@ Route::get('/right-join',[DemoController::class,'rightJoin']);
 
 //cross join
 Route::get('/cross-join',[DemoController::class,'crossJoin']);
+
+//===========================================================//
+
+
+//advance joine clauses
+
+//advance joinclauses
+Route::get('/advance-join-clause',[DemoController::class,'advanceJoinClause']);
+
+//unions joine
+Route::get('/union-join',[Democontroller::class, 'unionJoin']);
+
+
+
