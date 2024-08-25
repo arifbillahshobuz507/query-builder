@@ -108,4 +108,19 @@ class DemoController extends Controller
         $query2 = DB::table('products')->where('price','=', '20')->union($query1)->get();
         return $query2;
     }
+
+    //basic Where Clauses
+    public function basicWhereClauses(){
+        $data = DB::table('products')->where('products.price','>', '100');
+        $data = DB::table('products')->where('products.price','>=', '100');
+        $data = DB::table('products')->where('products.price','<', '100');
+        $data = DB::table('products')->where('products.price','<=', '100');
+        $data = DB::table('products')->where('products.price','!=', '100');
+        $data = DB::table('products')->where('products.title','LIKE', '%A%');
+        $data = DB::table('products')->where('products.title','NOT LIKE', '%A%');
+
+        $data = DB::table('products')->whereIn('products.price','=', '200');
+        $data = DB::table('products')->whereNotIn('products.price','=', '200');
+        return $data;
+    }
 }

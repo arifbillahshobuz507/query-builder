@@ -47,5 +47,8 @@ Route::get('/advance-join-clause',[DemoController::class,'advanceJoinClause']);
 //unions joine
 Route::get('/union-join',[Democontroller::class, 'unionJoin']);
 
+//basic where clauses
+Route::get('/basic-where-clauses',[Democontroller::class, 'basicWhereClauses']);
+
 
 
