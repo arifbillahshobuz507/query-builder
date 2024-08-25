@@ -109,18 +109,67 @@ class DemoController extends Controller
         return $query2;
     }
 
-    //basic Where Clauses
+    //Basic Where Clauses
     public function basicWhereClauses(){
-        $data = DB::table('products')->where('products.price','>', '100');
-        $data = DB::table('products')->where('products.price','>=', '100');
-        $data = DB::table('products')->where('products.price','<', '100');
-        $data = DB::table('products')->where('products.price','<=', '100');
-        $data = DB::table('products')->where('products.price','!=', '100');
-        $data = DB::table('products')->where('products.title','LIKE', '%A%');
-        $data = DB::table('products')->where('products.title','NOT LIKE', '%A%');
+        $data = DB::table('products')->where('products.price','>', '100')->get();
+        $data = DB::table('products')->where('products.price','>=', '100')->get();
+        $data = DB::table('products')->where('products.price','<', '100')->get();
+        $data = DB::table('products')->where('products.price','<=', '100')->get();
+        $data = DB::table('products')->where('products.price','!=', '100')->get();
+        $data = DB::table('products')->where('products.title','LIKE', '%A%')->get();
+        $data = DB::table('products')->where('products.title','NOT LIKE', '%A%')->get();
 
-        $data = DB::table('products')->whereIn('products.price','=', '200');
-        $data = DB::table('products')->whereNotIn('products.price','=', '200');
+
+        return $data;
+    }
+
+
+    //advance Where Clauses
+    public function advanceWhereClauses(){
+        //orWhere
+        $data = DB::table('products')->where('products.price','=', '300')->orWhere('products.price','=', '5000')->get();
+
+        // where not
+        $data = DB::table('products')->where('products.price','=', '300')->WhereNot('products.price','=', '5000')->get();
+
+        //where between
+        $data = DB::table('products')->whereBetween('products.price',['300','400'])->get();
+
+        //where not between
+        $data = DB::table('products')->whereNotBetween('products.price',['300','400'])->get();
+
+        //where null
+        $data = DB::table('products')->whereNull('products.price')->get();
+
+        //where not null
+        $data = DB::table('products')->whereNotNull('products.price')->get();
+
+        //where in
+        $data = DB::table('products')->whereIn('products.price','=', '200')->get();
+
+        //where not in
+        $data = DB::table('products')->whereNotIn('products.price','=', '200')->get();
+
+        //where date
+        $data = DB::table('categories')->whereDate('created_at','2024-08-07')->get();
+
+        //where month
+        $data = DB::table('categories')->whereMonth('created_at','01')->get();
+
+        //where day
+        $data = DB::table('categories')->whereDay('created_at','22')->get();
+
+        //where year
+        $data = DB::table('categories')->whereYear('created_at','2002')->get();
+
+        //where time
+        $data = DB::table('categories')->whereTime('created_at','04:09:49')->get();
+
+        //where cloumn
+        $data = DB::table('categories')->whereColumn('created_at','<','updated_at')->get();
+        $data = DB::table('products')->whereColumn('products.price','<','products.discount')->get();
+
+
         return $data;
     }
 }
