@@ -56,5 +56,12 @@ Route::get('/advance-where-clauses',[Democontroller::class, 'advanceWhereClauses
 //order by ascending
 Route::get('/order-by-ascending',[Democontroller::class, 'orderByAscending']);
 
+//order by descending
+Route::get('/order-by-descending',[Democontroller::class, 'orderByDescending']);
+
+//order by random
+Route::get('/order-by-random',[Democontroller::class, 'orderByRandom']);
+
+
 
 

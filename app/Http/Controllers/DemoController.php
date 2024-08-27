@@ -178,4 +178,16 @@ class DemoController extends Controller
         $data = DB::table('brands')->orderBy('brand_name','asc')->get();
         return $data;
     }
+    //order by descending
+    public function orderByDescending(){
+        $data = DB::table('categories')->orderBy('catrgory_name','desc')->get();
+        return $data;
+    }
+
+    //order by Random
+    public function orderByRandom(){
+        $data = DB::table('categories')->inRandomOrder()->get();
+        $data = DB::table('categories')->inRandomOrder()->first();
+        return $data;
+    }
 }
