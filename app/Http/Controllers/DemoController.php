@@ -190,4 +190,10 @@ class DemoController extends Controller
         $data = DB::table('categories')->inRandomOrder()->first();
         return $data;
     }
+
+    //order by skip and take
+    public function orderBySkipTake(){
+        $data = DB::table('brands')->skip('100')->take('700')->get();
+        return $data;
+    }
 }

@@ -62,6 +62,9 @@ Route::get('/order-by-descending',[Democontroller::class, 'orderByDescending']);
 //order by random
 Route::get('/order-by-random',[Democontroller::class, 'orderByRandom']);
 
+//order by skip and take
+Route::get('/order-by-skip-take',[Democontroller::class, 'orderBySkipTake']);
+
 
 
 
