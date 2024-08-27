@@ -53,5 +53,8 @@ Route::get('/basic-where-clauses',[Democontroller::class, 'basicWhereClauses']);
 //advance where clauses
 Route::get('/advance-where-clauses',[Democontroller::class, 'advanceWhereClauses']);
 
+//order by ascending
+Route::get('/order-by-ascending',[Democontroller::class, 'orderByAscending']);
+
 
 

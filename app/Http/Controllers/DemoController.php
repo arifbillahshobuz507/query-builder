@@ -172,4 +172,10 @@ class DemoController extends Controller
 
         return $data;
     }
+
+    //order by ascending
+    public function orderByAscending(){
+        $data = DB::table('brands')->orderBy('brand_name','asc')->get();
+        return $data;
+    }
 }
