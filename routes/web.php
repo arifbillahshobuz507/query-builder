@@ -65,6 +65,37 @@ Route::get('/order-by-random',[Democontroller::class, 'orderByRandom']);
 //order by skip and take
 Route::get('/order-by-skip-take',[Democontroller::class, 'orderBySkipTake']);
 
+//Group by
+Route::get('/group-by',[Democontroller::class, 'groupBy']);
+
+//Group by having
+Route::get('/group-by-having',[Democontroller::class, 'groupByHaving']);
+
+
+//===========================================================//
+
+// CURD Operation
+
+// insert data
+Route::post('/insert-data',[Democontroller::class, 'insertData']);
+
+// update data
+Route::post('/update-data/{id?}',[Democontroller::class, 'updateData']);
+
+// Update or Create data
+Route::post('/update-or-insert-data',[Democontroller::class, 'updateOrInsertData']);
+
+// increment data
+Route::post('/increment/{id?}',[Democontroller::class, 'incrementData']);
+
+//Decrement Data
+Route::post('/decrement/{id?}', [DemoController::class, 'decrementData']);
+
+//Decrement Data
+Route::post('/delete/{id?}', [DemoController::class, 'deleteData']);
+
+//=======================ALBAM APP====================================//
+
 
 
 
